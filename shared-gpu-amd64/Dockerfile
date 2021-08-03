@@ -16,7 +16,7 @@ RUN apt-get install -yq --no-install-recommends --allow-change-held-packages cud
 
 COPY tensorflow_cc_shared_1.15.0_cuda_10.1_amd64.deb /
 RUN dpkg -i /tensorflow_cc_shared_1.15.0_cuda_10.1_amd64.deb
-RUN rm -f /tensorflow_cc_shared_1.15.0_cuda_10.1_amd64.deb 
+RUN rm -f /tensorflow_cc_shared_1.15.0_cuda_10.1_amd64.deb
 
 RUN apt-get clean
 
