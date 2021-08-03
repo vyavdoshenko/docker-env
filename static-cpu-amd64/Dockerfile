@@ -33,6 +33,7 @@ RUN echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> /home/ubunt
 RUN mkdir /var/run/sshd
 RUN ssh-keygen -A -v
 RUN /usr/sbin/update-rc.d ssh defaults
+RUN sed -i "s/^.*X11UseLocalhost.*$/X11UseLocalhost no/" /etc/ssh/sshd_config
 
 RUN sudo chown -hR ubuntu /home/ubuntu
 
