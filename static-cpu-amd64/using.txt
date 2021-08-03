@@ -1,0 +1,7 @@
+mkdir ~/work/
+
+# For Linux only. macOS can't change these permitions by root group limitation.
+sudo chown -hR ${USER}:root ~/work/
+
+docker build --platform linux/amd64 -t stfbuild .
+docker run --mount type=bind,source=${HOME}/work,destination=/home/ubuntu/work -it stfbuild /bin/bash
