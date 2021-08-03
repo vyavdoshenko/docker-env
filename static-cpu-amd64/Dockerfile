@@ -9,13 +9,16 @@ RUN apt-get upgrade -y
 RUN apt-get install -yq nano vim neovim build-essential && \
     apt-get install -yq locales mc wget curl && \
     apt-get install -yq sudo net-tools iputils-ping && \
-    apt-get install -yq cmake curl g++-7 git python3-dev python3-numpy
+    apt-get install -yq curl g++-7 git python3-dev python3-numpy libudev-dev libturbojpeg0-dev
 
 COPY tensorflow_cc_static_1.15.0_amd64.deb /
 RUN dpkg -i /tensorflow_cc_static_1.15.0_amd64.deb
 RUN rm -f /tensorflow_cc_static_1.15.0_amd64.deb
 
 RUN apt-get clean
+
+RUN /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+RUN /home/linuxbrew/.linuxbrew/bin/brew install cmake
 
 RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
@@ -26,7 +29,8 @@ ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8
 
 RUN useradd -rm -d /home/ubuntu -s /bin/bash -g root -G sudo -u 1001 ubuntu
+RUN echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> /home/ubuntu/.bashrc
 USER ubuntu
 WORKDIR /home/ubuntu
 
-CMD /bin/bash
+CMD sudo chown -hR ubuntu /home/ubuntu; /bin/bash
