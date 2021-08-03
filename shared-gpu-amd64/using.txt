@@ -1,7 +1,5 @@
 mkdir ~/work/
-
-# For Linux only. macOS can't change these permitions by root group limitation.
 sudo chown -hR ${USER}:root ~/work/
 
 docker build -t tfbuild .
-docker run --runtime=nvidia --mount type=bind,source=${HOME}/work,destination=/home/ubuntu/work -it tfbuild /bin/bash
+docker run -p 2222:22 --runtime=nvidia --mount type=bind,source=${HOME}/work,destination=/home/ubuntu/work -it tfbuild /bin/bash
