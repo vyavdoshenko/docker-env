@@ -9,7 +9,8 @@ RUN apt-get upgrade -y
 RUN apt-get install -yq nano vim neovim build-essential && \
     apt-get install -yq locales mc wget curl openssl openssh-server xauth && \
     apt-get install -yq sudo net-tools iputils-ping && \
-    apt-get install -yq curl g++-7 git python3-dev python3-numpy libudev-dev libturbojpeg0-dev
+    apt-get install -yq curl g++-7 git python3-dev python3-numpy libudev-dev libturbojpeg0-dev && \
+    apt-get install -yq rsync gdb cgdb
 
 RUN apt-get install -yq --no-install-recommends --allow-change-held-packages cuda-10-1 libcudnn7 libcudnn7-dev
 
