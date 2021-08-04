@@ -2,4 +2,4 @@ mkdir ~/work/
 sudo chown -hR ${USER}:root ~/work/
 
 docker build -t tfbuild .
-docker run -p 2222:22 --runtime=nvidia --mount type=bind,source=${HOME}/work,destination=/home/ubuntu/work -it tfbuild /bin/bash
+docker run -p 2222:22 --runtime=nvidia --mount type=bind,source=${HOME}/work,destination=/home/ubuntu -it tfbuild /usr/bin/zsh
