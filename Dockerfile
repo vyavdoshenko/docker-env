@@ -22,7 +22,7 @@ RUN apt-get install -yq nano build-essential zsh snapd && \
     apt-get install -yq libxcb-xf86dri0 libxcb-xfixes0 libxcb-xinerama0 libxcb-xkb1 libxcb-xtest0 && \
     apt-get install -yq libxcb-xv0 libxcb-xvmc0 libxcb1 libx11-xcb1 libxcb-cursor0 && \
     apt-get install -yq libxcb-xrm0 libxcb-xinput0 && \
-    apt-get install -yq mplayer x11-apps
+    apt-get install -yq mplayer x11-apps libavresample-dev && mesa-utils
 
 RUN apt-get install -yq --no-install-recommends --allow-change-held-packages cuda-10-1 libcudnn7 libcudnn7-dev
 
