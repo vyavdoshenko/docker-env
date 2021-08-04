@@ -13,7 +13,15 @@ RUN apt-get install -yq nano build-essential zsh snapd && \
     apt-get install -yq rsync gdb cgdb libxkbcommon-x11-0 && \
     apt-get install -yq pkg-config libgtk2.0-dev libgtkglext1-dev && \
     apt-get install -yq ffmpeg libavcodec-dev libavformat-dev libswscale-dev libdrm-dev && \
-    apt-get install -yq libgtk2.0 libgtkglext1 libcanberra-gtk-module opencl-headers ocl-icd-opencl-dev
+    apt-get install -yq libgtk2.0 libgtkglext1 libcanberra-gtk-module opencl-headers ocl-icd-opencl-dev && \
+    apt-get install -yq libpulse-mainloop-glib0 xcb && \
+    apt-get install -yq libxcb-composite0 libxcb-damage0 libxcb-dpms0 libxcb-dri2-0 libxcb-dri3-0 && \
+    apt-get install -yq libxcb-ewmh2 libxcb-glx0 libxcb-icccm4 libxcb-image0 libxcb-keysyms1 && \
+    apt-get install -yq libxcb-present0 libxcb-randr0 libxcb-record0 libxcb-render0 libxcb-res0 && \
+    apt-get install -yq libxcb-screensaver0 libxcb-shape0 libxcb-shm0 libxcb-sync1 libxcb-util1 && \
+    apt-get install -yq libxcb-xf86dri0 libxcb-xfixes0 libxcb-xinerama0 libxcb-xkb1 libxcb-xtest0 && \
+    apt-get install -yq libxcb-xv0 libxcb-xvmc0 libxcb1 libx11-xcb1 libxcb-cursor0 && \
+    apt-get install -yq libxcb-xrm0 libxcb-xinput0
 
 COPY tensorflow_cc_static_1.15.0_amd64.deb /
 RUN dpkg -i /tensorflow_cc_static_1.15.0_amd64.deb
