@@ -2,4 +2,4 @@ mkdir ~/work/
 sudo chown -hR ${USER}:root ~/work/
 
 docker build -t stfbuild .
-docker run -p 2222:22 --mount type=bind,source=${HOME}/work,destination=/home/ubuntu/ -it stfbuild /usr/bin/zsh
+docker run -p 2222:22 --mount type=bind,source=${HOME}/work,destination=/home/ubuntu/ --privileged -it stfbuild /usr/bin/zsh
