@@ -1,6 +1,7 @@
 FROM nvidia/cuda:10.1-cudnn7-devel-ubuntu18.04
 
 ARG DEBIAN_FRONTEND=noninteractive
+ARG UID=1000
 
 RUN mkdir -p /usr/local/lib/cmake
 
@@ -46,7 +47,7 @@ ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8
 
-RUN useradd -p "$(openssl passwd -1 ubuntu)" -rm -d /home/ubuntu -s /usr/bin/zsh -g root -G sudo -u 1000 ubuntu
+RUN useradd -p "$(openssl passwd -1 ubuntu)" -rm -d /home/ubuntu -s /usr/bin/zsh -g root -G sudo -u $UID ubuntu
 
 RUN mkdir /var/run/sshd
 RUN ssh-keygen -A -v
