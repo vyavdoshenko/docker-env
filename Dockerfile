@@ -7,7 +7,7 @@ RUN mkdir -p /usr/local/lib/cmake
 
 RUN apt-get update
 RUN apt-get upgrade -y
-RUN apt-get install -yq nano build-essential zsh snapd && \
+RUN apt-get install -yq nano build-essential zsh && \
     apt-get install -yq locales mc wget curl openssl openssh-server xauth && \
     apt-get install -yq sudo net-tools iputils-ping && \
     apt-get install -yq curl g++-7 git python3-dev python3-numpy libudev-dev libturbojpeg0-dev && \
@@ -27,15 +27,16 @@ RUN apt-get install -yq nano build-essential zsh snapd && \
 
 RUN apt-get install -yq --no-install-recommends --allow-change-held-packages cuda-10-1 libcudnn7 libcudnn7-dev
 
-COPY tensorflow_cc_shared_1.15.0_cuda_10.1_amd64.deb /
+COPY tensorflow_cc_*.deb /
 RUN dpkg -i /tensorflow_cc_shared_1.15.0_cuda_10.1_amd64.deb
-RUN rm -f /tensorflow_cc_shared_1.15.0_cuda_10.1_amd64.deb
-
-COPY tensorflow_cc_static_1.15.0_amd64.deb /
 RUN dpkg -i /tensorflow_cc_static_1.15.0_amd64.deb
-RUN rm -f /tensorflow_cc_static_1.15.0_amd64.deb
+RUN rm -f /tensorflow_cc*.deb
 
 RUN apt-get clean
+
+COPY CLion-*.tar.gz /
+RUN tar xvzf CLion-*.tar.gz -C /opt/
+RUN rm -f /CLion-*.tar.gz
 
 RUN /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 RUN /home/linuxbrew/.linuxbrew/bin/brew install cmake vim neovim
