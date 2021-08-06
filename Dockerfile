@@ -43,6 +43,9 @@ RUN /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/instal
 RUN /home/linuxbrew/.linuxbrew/bin/brew install cmake vim neovim ctags ripgrep ack
 RUN /home/linuxbrew/.linuxbrew/bin/brew install python3
 
+RUN update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-8 8
+RUN update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-8 8
+
 RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
 RUN sed -i '/en_US.UTF-8/s/^# //g' /etc/locale.gen && locale-gen
