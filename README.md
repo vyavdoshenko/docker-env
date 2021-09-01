@@ -10,9 +10,7 @@
 
 ## Docker build
 ```
-docker build --build-arg UID=$(id -u) \
-    --build-arg GID=$(id -g) \
-    -t build_env .
+docker build --build-arg UID=$(id -u) -t build_env .
 ```
 
 ## Docker run

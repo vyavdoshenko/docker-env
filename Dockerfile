@@ -2,9 +2,8 @@
 FROM nvidia/cuda:10.1-cudnn7-devel-ubuntu18.04
 
 ARG DEBIAN_FRONTEND=noninteractive
-# default user and groud id
+# default user id
 ARG UID=1000
-ARG GID=1000
 
 RUN mkdir -p /usr/local/lib/cmake
 
@@ -61,7 +60,7 @@ ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8
 
 # create user ubuntu with password ubuntu
-RUN useradd -p "$(openssl passwd -1 ubuntu)" -rm -d /home/ubuntu -s /usr/bin/zsh -g $GID -G sudo -u $UID ubuntu
+RUN useradd -p "$(openssl passwd -1 ubuntu)" -rm -d /home/ubuntu -s /usr/bin/zsh -G sudo -u $UID ubuntu
 
 # ssh service install with xserver support
 RUN mkdir /var/run/sshd
