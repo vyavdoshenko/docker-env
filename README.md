@@ -5,6 +5,8 @@
 - Installed nvidia drivers
 - Installed docker
 - Created ~/work folder for using as a home folder inside a docker container
+- CLion tar.gz archive placed next to Dockerfile
+- .deb package placed next to Dockerfile 
 
 ## Docker build
 ```
