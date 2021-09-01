@@ -1,14 +1,20 @@
 # Docker development environment
 
-- Docker build
-{code}
+## Pre-requirements
+- Linux distributive on the host
+- Installed nvidia drivers
+- Installed docker
+- Created ~/work folder for using as a home folder inside a docker container
+
+## Docker build
+```
 docker build --build-arg UID=$(id -u) \
     --build-arg GID=$(id -g) \
     -t build_env .
-{code}
+```
 
-- Docker run
-{code}
+## Docker run
+```
 docker run -p 2222:22 \
     --runtime=nvidia \
     --mount type=bind,source=${HOME}/work,destination=/home/ubuntu \
@@ -23,4 +29,4 @@ docker run -p 2222:22 \
     --hostname DOCKER_NVIDIA \
     -it build_env \
     /usr/bin/zsh
-{code}
+```
