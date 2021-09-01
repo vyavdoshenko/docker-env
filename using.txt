@@ -1,7 +1,0 @@
-mkdir ~/work/
-sudo chown -hR ${USER}:root ~/work/
-
-
-docker build --build-arg UID=$(id -u) -t tfbuild .
-
-docker run -p 2222:22 --runtime=nvidia --mount type=bind,source=${HOME}/work,destination=/home/ubuntu --privileged --device /dev/video0 -v /dev/snd:/dev/snd -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$DISPLAY -e QT_X11_NO_MITSHM=1 -e PULSE_SERVER=unix:${XDG_RUNTIME_DIR}/pulse/native -v ${XDG_RUNTIME_DIR}/pulse/native:${XDG_RUNTIME_DIR}/pulse/native --hostname KONG_BUILD -it tfbuild /usr/bin/zsh
