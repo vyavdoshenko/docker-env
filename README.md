@@ -1,8 +1,8 @@
-# Docker development environment
+# Docker development environment based on NVIDIA docker image.
 
 ## Pre-requirements
 - Linux distributive on the host
-- Installed nvidia drivers
+- Installed NVIDIA drivers
 - Installed docker
 - Created ~/work folder for using as a home folder inside a docker container
 - CLion tar.gz archive placed next to Dockerfile
