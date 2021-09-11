@@ -43,3 +43,8 @@ docker run -p 2222:22 \
 - This docker image based on Ubuntu 18.04 and there are several packages versions are outdated. That's why linuxbrew added to container to add fresh version for several packages.
 
 Be aware that 3d based applications can be started from the docker container shell only. X applications can be started from the docker container shell and using ssh session.
+
+## ssh access
+```
+ssh -X -p 2222 ubuntu@localhost
+````
