@@ -1,6 +1,6 @@
 # Docker development environment based on NVIDIA docker image.
 
-## Pre-requirements
+## pre-requirements
 - Linux distributive on the host
 - Installed NVIDIA drivers
 - Installed docker
@@ -10,13 +10,13 @@
 
 ![Files](images/files.png)
 
-## Docker build
+## docker build
 ```
 docker build --build-arg UID=$(id -u) -t build_env .
 ```
 This command creates user inside docker with the same user id. The host machine and docker container will not have files rights conflicts.
 
-## Docker run
+## docker run
 ```
 docker run -p 2222:22 \
     --runtime=nvidia \
@@ -48,3 +48,14 @@ Be aware that 3d based applications can be started from the docker container she
 ```
 ssh -X -p 2222 ubuntu@localhost
 ````
+
+## examples of using
+
+- X application started from docker container shell
+![Clock](images/clock.png)
+
+- 3d application started from docker container shell
+![Gears](images/gears.png)
+
+- X application (CLion) started from ssh session
+![CLion](images/clion.png)
