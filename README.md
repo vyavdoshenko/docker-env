@@ -8,10 +8,13 @@
 - CLion tar.gz archive placed next to Dockerfile
 - .deb package placed next to Dockerfile 
 
+![Files](images/files.png)
+
 ## Docker build
 ```
 docker build --build-arg UID=$(id -u) -t build_env .
 ```
+This command creates user inside docker with the same user id. The host machine and docker container will not have files rights conflicts.
 
 ## Docker run
 ```
@@ -30,3 +33,11 @@ docker run -p 2222:22 \
     -it build_env \
     /usr/bin/zsh
 ```
+- Running container you will be able to use exposed ssh port 2222 using ubuntu:ubuntu credentials. 
+- The option privileged is needed to bypass devices inside the contained and it can requite experimental feature on in docker config.
+- /dev/video0 explicitly set in command line. If you have another one please set proper device.
+- DOCKER_NVIDIA is the hostname. Please change on your favorite name if you want.
+- zsh uses inside container. Feel free to change favorite yours.
+- ~/work directory is mapped to home directory inside the docker. The state of this dirrectory saves between start. You can feel it like real home folder.
+- .deb package installs during docker container build. You can remove this step from Dockerfile if needed. The same is for CLion.
+- This docker image based on Ubuntu 18.04 and there are several packages versions are outdated. That's why linuxbrew added to container to add fresh version for several packages.
