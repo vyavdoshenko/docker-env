@@ -37,7 +37,9 @@ docker run -p 2222:22 \
 - The option privileged is needed to bypass devices inside the contained and it can requite experimental feature on in docker config.
 - /dev/video0 explicitly set in command line. If you have another one please set proper device.
 - DOCKER_NVIDIA is the hostname. Please change on your favorite name if you want.
-- zsh uses inside container. Feel free to change favorite yours.
+- zsh is used inside the container. Feel free to change favorite yours.
 - ~/work directory is mapped to home directory inside the docker. The state of this dirrectory saves between start. You can feel it like real home folder.
 - .deb package installs during docker container build. You can remove this step from Dockerfile if needed. The same is for CLion.
 - This docker image based on Ubuntu 18.04 and there are several packages versions are outdated. That's why linuxbrew added to container to add fresh version for several packages.
+
+Be aware that 3d based applications can be started from the docker container shell only. X applications can be started from the docker container shell and using ssh session.
